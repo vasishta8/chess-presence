@@ -1,0 +1,1 @@
+#  Rich Presence on Discord for Chess.com and Lichess
