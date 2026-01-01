@@ -1,0 +1,4 @@
+pypresence
+Flask
+flask-cors
+python-dotenv

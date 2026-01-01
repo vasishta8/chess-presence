@@ -1,0 +1,13 @@
+{
+    "name": "Chess Presence Bridge",
+    "description": "Extension to update your chess rich presence on Discord.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": [
+        "tabs",
+        "activeTab"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    }
+}
