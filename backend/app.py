@@ -25,7 +25,7 @@ def update_presence():
     data = request.get_json()
     url = data['url']
     print(url)
-    if not re.search("^https://www\.chess\.com", url):
+    if not re.search("^https://www\.chess\.com", url) and not re.search("^https://lichess\.org", url):
         RPC.clear()
     elif re.search("^https://www\.chess\.com/puzzles/*", url):
         RPC.update(
@@ -50,11 +50,47 @@ def update_presence():
             start=int(time.time())
         )
 
-    else:
+    elif re.search("^https://www\.chess\.com/*", url):
         RPC.update(
             details="Chess.com",
             state="Idling",
             large_image="chess-com-icon",
+            start=int(time.time())
+        )
+
+    elif re.search("^https://lichess\.org/training*", url):
+        RPC.update(
+            details="Lichess",
+            state="Solving Puzzles",
+            large_image="lichess-org-icon",
+            start=int(time.time())
+        )
+    elif re.search("^https://lichess\.org/learning*", url):
+        RPC.update(
+            details="Lichess",
+            state="Learning chess",
+            large_image="lichess-org-icon",
+            start=int(time.time())
+        )
+    elif re.search("^https://lichess\.org/@/*", url):
+        RPC.update(
+            details="Lichess",
+            state="Viewing a profile",
+            large_image="lichess-org-icon",
+            start=int(time.time())
+        )
+    elif re.search("^https://lichess\.org/*", url):
+        RPC.update(
+            details="Lichess",
+            state="In a game",
+            large_image="lichess-org-icon",
+            start=int(time.time())
+        )
+    elif re.search("^https://lichess\.org", url):
+        RPC.update(
+            details="Lichess",
+            state="Idling",
+            large_image="lichess-org-icon",
             start=int(time.time())
         )
     return jsonify({"status": "success"}), 200
