@@ -27,14 +27,14 @@ def update_presence():
     print(url)
     if not re.search("^https://www\.chess\.com", url) and not re.search("^https://lichess\.org", url):
         RPC.clear()
-    elif re.search("^https://www\.chess\.com/puzzles/*", url):
+    elif re.search("^https://www\.chess\.com/puzzles/.*", url):
         RPC.update(
             details="Chess.com",
             state="Solving Puzzles",
             large_image="chess-com-icon",
             start=int(time.time())
         )
-    elif re.search("^https://www\.chess\.com/game/live/*", url):
+    elif re.search("^https://www\.chess\.com/game/live/.*", url):
         RPC.update(
             details="Chess.com",
             state="Viewing a game",
@@ -42,7 +42,7 @@ def update_presence():
             start=int(time.time())
         )
 
-    elif re.search("^https://www\.chess\.com/game/*", url):
+    elif re.search("^https://www\.chess\.com/game/.*", url):
         RPC.update(
             details="Chess.com",
             state="In a game",
@@ -50,7 +50,7 @@ def update_presence():
             start=int(time.time())
         )
 
-    elif re.search("^https://www\.chess\.com/*", url):
+    elif re.search("^https://www\.chess\.com/.*", url):
         RPC.update(
             details="Chess.com",
             state="Idling",
@@ -58,28 +58,28 @@ def update_presence():
             start=int(time.time())
         )
 
-    elif re.search("^https://lichess\.org/training*", url):
+    elif re.search("^https://lichess\.org/training.*", url):
         RPC.update(
             details="Lichess",
             state="Solving Puzzles",
             large_image="lichess-org-icon",
             start=int(time.time())
         )
-    elif re.search("^https://lichess\.org/learning*", url):
+    elif re.search("^https://lichess\.org/learning.*", url):
         RPC.update(
             details="Lichess",
             state="Learning chess",
             large_image="lichess-org-icon",
             start=int(time.time())
         )
-    elif re.search("^https://lichess\.org/@/*", url):
+    elif re.search("^https://lichess\.org/@/.*", url):
         RPC.update(
             details="Lichess",
             state="Viewing a profile",
             large_image="lichess-org-icon",
             start=int(time.time())
         )
-    elif re.search("^https://lichess\.org/*", url):
+    elif re.search("^https://lichess\.org/.*", url):
         RPC.update(
             details="Lichess",
             state="In a game",
